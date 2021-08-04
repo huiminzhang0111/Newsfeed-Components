@@ -114,3 +114,63 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+//console.log(data);
+//grab the parent element 
+const articles = document.querySelector('.articles');
+// console.log(articles);
+
+//create a function 'makeArtile' that creates an article sector like what's in the HTML
+function makeArtile({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+  //instantiate all the elements needed for a panel
+  const article = document.createElement('div');
+  const article_title = document.createElement('h2');
+  const article_date = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandButton = document.createElement('button');
+
+
+  //setup the structure of our elements
+  article.appendChild(article_title);
+  article.appendChild(article_date);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expandButton);
+
+
+  //add proper class names to our elements 
+  article.classList.add('article');
+  //article_title.classList.add('h2');
+  article_date.classList.add('date');
+  expandButton.classList.add('.expandButton');
+
+  //set text content using arguments as raw material
+  article_title.textContent = title;
+  article_date.textContent = date;
+  expandButton.textContent = '+';
+
+  expandButton.addEventListener('click', event => {
+    p1.textContent = firstParagraph;
+    p2.textContent = secondParagraph;
+    p3.textContent = thirdParagraph;
+    article.classList.toggle('article-open');
+    // p2.classList.toggle('article-open');
+    // p3.classList.toggle('article-open');
+  })
+  return article;
+}
+
+const article_elements = data.map(article => {
+  return makeArtile(article);
+})
+
+article_elements.forEach(article => {
+  articles.appendChild(article);
+})
+
+data.forEach(article => {
+  const new_article = makeArtile(article);
+  articles.appendChild(new_article);
+})
