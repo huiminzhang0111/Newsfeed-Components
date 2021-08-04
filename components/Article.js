@@ -128,10 +128,11 @@ function makeArtile({title, date, firstParagraph, secondParagraph, thirdParagrap
   const p1 = document.createElement('p');
   const p2 = document.createElement('p');
   const p3 = document.createElement('p');
-  const expandButton = document.createElement('button');
+  const expandButton = document.createElement('span');
 
 
   //setup the structure of our elements
+  articles.appendChild(article);
   article.appendChild(article_title);
   article.appendChild(article_date);
   article.appendChild(p1);
@@ -144,20 +145,19 @@ function makeArtile({title, date, firstParagraph, secondParagraph, thirdParagrap
   article.classList.add('article');
   //article_title.classList.add('h2');
   article_date.classList.add('date');
-  expandButton.classList.add('.expandButton');
+  expandButton.classList.add('expandButton');
 
   //set text content using arguments as raw material
   article_title.textContent = title;
   article_date.textContent = date;
   expandButton.textContent = '+';
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+
 
   expandButton.addEventListener('click', event => {
-    p1.textContent = firstParagraph;
-    p2.textContent = secondParagraph;
-    p3.textContent = thirdParagraph;
     article.classList.toggle('article-open');
-    // p2.classList.toggle('article-open');
-    // p3.classList.toggle('article-open');
   })
   return article;
 }
