@@ -51,15 +51,16 @@ menuButton.appendChild(menuDiv);
 menuDiv.appendChild(menuList);
 
 menuDiv.classList.add('menu');
+
 const menuMaker = menuItems.map(item => {
   const menuItem = document.createElement('li');
   menuItem.textContent = item;
   return menuItem;
 })
 
-menuButton.addEventListener('click', event => {
-  menuDiv.classList.toggle('menu--open');
-});
+// menuButton.addEventListener('click', event => {
+//   menuDiv.classList.toggle('menu--open');
+// });
 
 menuMaker.forEach(item=> {
   menuList.appendChild(item);
